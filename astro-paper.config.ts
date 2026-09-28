@@ -3,7 +3,7 @@ import { defineAstroPaperConfig } from "./src/types/config";
 export default defineAstroPaperConfig({
   site: {
     url: "https://clutchbear.github.io",
-    title: "信哥的博客",
+    title: "伩仁的博客",
     description: "技术笔记与折腾记录：Python、运维、硬件、生活。",
     author: "ClutchBear",
     profile: "https://clutchbear.github.io",
