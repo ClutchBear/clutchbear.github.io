@@ -35,7 +35,7 @@ const homePath = getRelativeLocaleUrl(locale, "");
   >
     <section id="hero" class="border-border border-b pt-8 pb-6">
       <h1 class="my-4 inline-block text-4xl font-bold sm:my-8 sm:text-5xl">
-        Mingalaba
+        你好，我是信哥
       </h1>
       <a
         target="_blank"
@@ -53,20 +53,18 @@ const homePath = getRelativeLocaleUrl(locale, "");
       </a>
 
       <p>
-        AstroPaper is a minimal, responsive, accessible and SEO-friendly Astro
-        blog theme. This theme follows best practices and provides accessibility
-        out of the box. Light and dark mode are supported by default. Moreover,
-        additional color schemes can also be configured.
+        这里收录了我 2014–2019 年间写的 70 篇旧文，主题大多是当年折腾
+        Mac、Python、爬虫和各类网站登录脚本的记录。现在还在折腾的方向：Python
+        与自动化、运维与自托管、机械键盘、游戏视频。
       </p>
       <p class="mt-2">
-        Read the blog posts or check{" "}
-        <LinkButton
+        欢迎阅读<a
           class="hover:text-accent underline decoration-dashed underline-offset-4"
-          href="https://github.com/satnaing/astro-paper#readme"
-        >
-          README
-        </LinkButton>{" "}
-        for more info.
+          href="/posts/">全部文章</a
+        >，或在<a
+          class="hover:text-accent underline decoration-dashed underline-offset-4"
+          href="/about/">关于</a
+        >页面进一步了解我。
       </p>
       {
         socials.length > 0 && (
