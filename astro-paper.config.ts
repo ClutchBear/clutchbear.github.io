@@ -18,7 +18,7 @@ export default defineAstroPaperConfig({
     scheduledPostMargin: 15 * 60 * 1000,
   },
   features: {
-    lightAndDarkMode: true,
+    lightAndDarkMode: false, // 强制深色模式，去掉右上角浅色/深色切换图标
     dynamicOgImage: false, // 关闭动态 OG 生成，省构建时间；回退 public/default-og.jpg
     showArchives: true,
     showBackButton: true,

@@ -3,17 +3,12 @@ const LIGHT = "light";
 const DARK = "dark";
 
 function getPreferredTheme(): string {
-  const stored = localStorage.getItem(THEME_KEY);
-  if (stored) return stored;
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? DARK
-    : LIGHT;
+  // 强制深色模式：忽略 localStorage 与系统偏好。
+  return DARK;
 }
 
 // Reuse the value already set by the inline FOUC-prevention script if available.
-let themeValue: string =
-  (window as unknown as { __theme?: { value: string } }).__theme?.value ??
-  getPreferredTheme();
+let themeValue: string = DARK;
 
 function persist(): void {
   localStorage.setItem(THEME_KEY, themeValue);
@@ -60,10 +55,4 @@ document.addEventListener("astro:before-swap", event => {
   }
 });
 
-// Sync with OS-level dark/light preference changes.
-window
-  .matchMedia("(prefers-color-scheme: dark)")
-  .addEventListener("change", ({ matches }) => {
-    themeValue = matches ? DARK : LIGHT;
-    persist();
-  });
+// 已强制深色模式：不再跟随系统浅色/深色切换，避免被翻回 light。
