@@ -31,3 +31,8 @@ public/pagefind
 
 # docker compose
 compose.override.yaml
+
+# syncthing metadata（同步工具自动生成，勿入库）
+.stfolder/
+.stignore
+.sync-conflict-*
