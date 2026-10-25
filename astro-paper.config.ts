@@ -2,11 +2,11 @@ import { defineAstroPaperConfig } from "./src/types/config";
 
 export default defineAstroPaperConfig({
   site: {
-    url: "https://clutchbear.github.io",
+    url: "https://68868686.xyz",
     title: "伩刃的博客",
     description: "技术笔记与折腾记录：Python、运维、硬件、生活。",
     author: "ClutchBear",
-    profile: "https://clutchbear.github.io",
+    profile: "https://68868686.xyz",
     ogImage: "default-og.jpg",
     lang: "zh",
     timezone: "Asia/Shanghai",
