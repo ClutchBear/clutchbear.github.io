@@ -55,7 +55,8 @@ git config --global user.name "playbear"
 
 - 初始化Hexo:
 
-```mkdir playbear.github.io
+```bash
+mkdir playbear.github.io
 cd playbear.github.io
 hexo init
 npm install
@@ -65,7 +66,8 @@ hexo d
 
 ### 3. 常用hexo命令
 
-```hexo n "new_file"(之后用mou编辑new_file.md)
+```bash
+hexo n "new_file"   # 之后用 mou 编辑 new_file.md
 hexo g
 hexo d
 ```

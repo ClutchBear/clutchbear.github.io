@@ -12,7 +12,7 @@ draft: false
     sudo yum install -y gcc gcc-c++ make jemalloc-devel epel-release
     ```
     + 下载最新版redis并解压到指定目录, 然后编译和安装
-    ```sehl
+    ```shell
     wget http://download.redis.io/releases/redis-4.0.2.tar.gz
     sudo tar -zvxf redis-4.0.2.tar.gz -C /usr/
     #进入目录
@@ -46,7 +46,7 @@ draft: false
 
 + 根据也无需求, 大于100万的bloomfilter key需要手动建立
 
-  ```redis
+  ```shell
   BF.RESERVE 2018_ccgp 0.0001 28000000
   Memory Usage 2018_ccgp
   # (integer) 67108997 64M
