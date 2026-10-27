@@ -12,6 +12,12 @@ type Props = {
   description?: string;
   ogImage?: string;
   canonicalURL?: string;
+  /**
+   * 输出 `<meta name="robots" content="noindex, follow">`。
+   * 用于站内搜索页、标签聚合页这类「薄内容 / 重复内容」页面：
+   * 不收录，但保留链接权重传递（follow）。
+   */
+  noindex?: boolean;
 };
 
 const { site } = config;
@@ -21,6 +27,7 @@ const {
   description = site.description,
   ogImage = resolveDefaultOgImagePath(config),
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
+  noindex = false,
 } = Astro.props;
 
 const socialImageURL = new URL(ogImage, Astro.site ?? Astro.url);
@@ -42,6 +49,7 @@ const rssHref = getRelativeLocaleUrl(
     <link rel="icon" type="image/svg+xml" href={getAssetPath("favicon.svg")} />
     <link rel="icon" href={getAssetPath("favicon.ico")} />
     <link rel="canonical" href={canonicalURL} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <meta name="generator" content={Astro.generator} />
 
     <!-- Font -->

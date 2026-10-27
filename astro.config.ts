@@ -24,8 +24,25 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap({
-      filter: page =>
-        config.features?.showArchives !== false || !page.endsWith("/archives/"),
+      // 只把「有独立检索价值」的页面交给搜索引擎。
+      // 标签聚合页 / 站内搜索页的内容与文章列表高度重复，
+      // 放进 sitemap 只会摊薄抓取预算，故排除（这些页面另有 noindex）。
+      filter: page => {
+        const { pathname } = new URL(page);
+
+        if (/^\/(?:[a-zA-Z]{2}\/)?(tags|search)(\/|$)/.test(pathname)) {
+          return false;
+        }
+
+        if (
+          config.features?.showArchives === false &&
+          pathname.endsWith("/archives/")
+        ) {
+          return false;
+        }
+
+        return true;
+      },
     }),
   ],
   i18n: {
