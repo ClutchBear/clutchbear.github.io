@@ -1,0 +1,139 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Main from "@/components/Main.astro";
+import Footer from "@/components/Footer.astro";
+import config from "@/config";
+
+type LinkItem = {
+  name: string;
+  handle: string;
+  desc: string;
+  url: string;
+  badge: string;
+  color: string;
+};
+
+const groups: { title: string; items: LinkItem[] }[] = [
+  {
+    title: "写东西",
+    items: [
+      {
+        name: "知乎",
+        handle: "@ClutchBear",
+        desc: "主阵地，回答为主",
+        url: "https://www.zhihu.com/people/ClutchBear",
+        badge: "知",
+        color: "#0084ff",
+      },
+      {
+        name: "掘金",
+        handle: "3139860937339550",
+        desc: "技术文章",
+        url: "https://juejin.cn/user/3139860937339550",
+        badge: "掘",
+        color: "#1e80ff",
+      },
+      {
+        name: "博客",
+        handle: "68868686.xyz",
+        desc: "长文与技术笔记",
+        url: "https://68868686.xyz",
+        badge: "博",
+        color: "#ff6b01",
+      },
+    ],
+  },
+  {
+    title: "发视频",
+    items: [
+      {
+        name: "哔哩哔哩",
+        handle: "UID 477341",
+        desc: "横屏，游戏与折腾",
+        url: "https://space.bilibili.com/477341",
+        badge: "B",
+        color: "#fb7299",
+      },
+    ],
+  },
+  {
+    title: "代码与联系",
+    items: [
+      {
+        name: "GitHub",
+        handle: "@ClutchBear",
+        desc: "开源项目与脚本",
+        url: "https://github.com/ClutchBear",
+        badge: "GH",
+        color: "#6e7681",
+      },
+      {
+        name: "邮箱",
+        handle: "skywater@gmail.com",
+        desc: "有事直接写信",
+        url: "mailto:skywater@gmail.com",
+        badge: "@",
+        color: "#00a1d6",
+      },
+    ],
+  },
+];
+---
+
+<Layout
+  title={`链接 | ${config.site.title}`}
+  description="伩刃在各平台的入口，一页找齐。"
+>
+  <Header />
+
+  <Main pageTitle="链接" pageDesc="各平台的入口，一页找齐">
+    <div class="space-y-8">
+      {
+        groups.map(group => (
+          <section>
+            <h2 class="text-muted-foreground mb-3 text-sm font-medium tracking-widest">
+              {group.title}
+            </h2>
+            <ul class="grid list-none gap-3 p-0 sm:grid-cols-2">
+              {group.items.map(item => (
+                <li class="m-0 p-0">
+                  <a
+                    href={item.url}
+                    target={item.url.startsWith("mailto:") ? undefined : "_blank"}
+                    rel="noopener noreferrer"
+                    class="group border-border hover:border-accent hover:bg-muted/20 flex items-center gap-3 rounded-lg border p-3 no-underline transition-colors"
+                  >
+                    <span
+                      class="flex size-10 shrink-0 items-center justify-center rounded-md text-sm font-bold text-white"
+                      style={`background:${item.color}`}
+                      aria-hidden="true"
+                    >
+                      {item.badge}
+                    </span>
+                    <span class="min-w-0 flex-1">
+                      <span class="text-foreground block truncate font-medium">
+                        {item.name}
+                      </span>
+                      <span class="text-muted-foreground block truncate text-xs">
+                        {item.handle} · {item.desc}
+                      </span>
+                    </span>
+                    <span
+                      class="text-muted-foreground group-hover:text-accent shrink-0 transition-colors"
+                      aria-hidden="true"
+                    >
+                      ↗
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))
+      }
+    </div>
+  </Main>
+
+  <Footer />
+</Layout>
