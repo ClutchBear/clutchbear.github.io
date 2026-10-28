@@ -1,0 +1,38 @@
+---
+// 评论系统：giscus（基于 GitHub Discussions）
+// 配置生成于 2026-10-28 giscus.app，映射 pathname（每篇文章对应一个 discussion）
+---
+
+<section id="giscus-comments" class="my-8">
+  <h2 class="text-accent inline-block text-2xl font-bold">评论</h2>
+  <div class="giscus mt-4"></div>
+</section>
+
+<script is:inline data-astro-rerun>
+  function loadGiscus() {
+    const container = document.querySelector("#giscus-comments .giscus");
+    if (!container) return;
+
+    // 视图过渡切换页面后重挂载，先清掉旧实例
+    container.innerHTML = "";
+
+    const script = document.createElement("script");
+    script.src = "https://giscus.app/client.js";
+    script.setAttribute("data-repo", "ClutchBear/clutchbear.github.io");
+    script.setAttribute("data-repo-id", "R_kgDOUkGe_g");
+    script.setAttribute("data-category", "Comments");
+    script.setAttribute("data-category-id", "DIC_kwDOUkGe_s4DJz7X");
+    script.setAttribute("data-mapping", "pathname");
+    script.setAttribute("data-strict", "0");
+    script.setAttribute("data-reactions-enabled", "0");
+    script.setAttribute("data-emit-metadata", "0");
+    script.setAttribute("data-input-position", "top");
+    script.setAttribute("data-theme", "noborder_dark");
+    script.setAttribute("data-lang", "zh-CN");
+    script.setAttribute("data-loading", "lazy");
+    script.crossOrigin = "anonymous";
+    script.async = true;
+    container.appendChild(script);
+  }
+  loadGiscus();
+</script>
