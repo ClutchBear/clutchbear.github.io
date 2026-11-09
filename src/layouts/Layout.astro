@@ -31,10 +31,13 @@ const {
 } = Astro.props;
 
 const socialImageURL = new URL(ogImage, Astro.site ?? Astro.url);
+// rss.xml 是「文件型端点」而非目录：getRelativeLocaleUrl() 会按 directory
+// 格式补尾斜杠，得到 /rss.xml/ —— 该路径实际返回 404，导致下面的
+// <link rel="alternate"> feed 自动发现链接失效。这里去掉尾部斜杠。
 const rssHref = getRelativeLocaleUrl(
   Astro.currentLocale ?? config.site.lang,
   "rss.xml"
-);
+).replace(/\/+$/, "");
 ---
 
 <!doctype html>
